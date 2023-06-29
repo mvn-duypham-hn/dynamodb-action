@@ -14,5 +14,5 @@ const settings = ["port", "dbPath", "sharedDb", "cors", "delayTransientStatuses"
 		settings.delayTransientStatuses ? `-delayTransientStatuses` : null,
 		settings.optimizeDbBeforeStartup ? `-optimizeDbBeforeStartup` : null
 	].filter((a) => Boolean(a)).join(" ");
-	await exec.exec(`sudo docker run --name dynamodb -d -p ${settings.port}:${settings.port} amazon/dynamodb-local@1.22.0 -jar DynamoDBLocal.jar -port ${settings.port}${extraArguments ? ` ${extraArguments}` : ""}`);
+	await exec.exec(`sudo docker run --name dynamodb -d -p ${settings.port}:${settings.port} amazon/dynamodb-local:1.22.0 -jar DynamoDBLocal.jar -port ${settings.port}${extraArguments ? ` ${extraArguments}` : ""}`);
 })();
